@@ -10,7 +10,6 @@
 #define Get(C) for (C, i = n[T[0]]; j = x + i % 4, k = y + i / 4 % 4, i; i >>= 4)
 #define Next(C) for (C, i = n[T[1]]; nj = i % 4, nk = i / 4 % 4, i; i >>= 4)
 
-
 // 每种方块的类型
 // 使用一个数字储存
 // 转化为二进制使用
@@ -34,13 +33,13 @@ int n[] = {
 	25920,
 	38177,
 	42580,
-	38993 };
+	38993};
 // 变量
-int i, j, k, d , my= 0;
+int i, j, k, d, my = 0;
 int nj, nk = 0;
 int c = -1;
 // 地图
-int* map = NULL;
+int *map = NULL;
 // 地图大小
 int height = 25;
 int wide = 15;
@@ -52,13 +51,13 @@ int y = 0;
 int T[2] = {0};
 // 积分
 int marks = 0;
-//困难程度
+// 困难程度
 int flag = 0;
 int num = 0;
-//提示区域
-int* imply = NULL;
-//下一个元素
-int* next = NULL;
+// 提示区域
+int *imply = NULL;
+// 下一个元素
+int *next = NULL;
 
 // ! 函数区域
 
@@ -78,7 +77,7 @@ void welcome()
 	printf("*****************************************************************************\n");
 }
 
-void move(int* v, int l)
+void move(int *v, int l)
 {
 	// 用Get取出四个位置坐标，并判断合法性
 	// 分别判断左越界，右越界，下越界，有无方块
@@ -111,7 +110,7 @@ void move(int* v, int l)
 	}
 }
 
-void check(int* map, int* c , int * x , int * y , int T[2] , int* j , int * k)
+void check(int *map, int *c, int *x, int *y, int T[2], int *j, int *k)
 {
 	int count = 0;
 	if (*c == -1)
@@ -131,7 +130,7 @@ void check(int* map, int* c , int * x , int * y , int T[2] , int* j , int * k)
 			i = size - 1;
 			while (i)
 			{
-				for (*j = wide ; i ;)
+				for (*j = wide; i;)
 				{
 					*j -= !!map[i];
 					if ((i-- % wide) == 0)
@@ -171,15 +170,15 @@ void game()
 	// 设置随机数起点
 	srand((unsigned int)time(NULL));
 	// 开辟空间
-	map = (int*)calloc(size = wide * height, sizeof(int));
-	next = (int*)calloc(16, sizeof(int));
+	map = (int *)calloc(size = wide * height, sizeof(int));
+	next = (int *)calloc(16, sizeof(int));
 	// 清屏
 	// 退出
 	// 刷新率
-	
+
 	for (system("cls"); c - 27; Sleep(30))
 	{
-		CONSOLE_CURSOR_INFO a = { 1, 0 };
+		CONSOLE_CURSOR_INFO a = {1, 0};
 		SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &a);
 		// 获取是否有操作
 		// 转换大小写
@@ -207,7 +206,7 @@ void game()
 		{
 			move(&y, 1);
 		}
-		//旋转
+		// 旋转
 		if (!(c ^ 87))
 		{
 			if (T[0] > 8)
@@ -247,7 +246,7 @@ void game()
 				map[k * wide + j] = T[0] / 4 * 16 + 154;
 			}
 		}
-		//提高难度
+		// 提高难度
 		if (num == 15)
 		{
 			if (flag != 12)
@@ -262,7 +261,7 @@ void game()
 		// 注意这里是两个空格,不然比例不对
 		// 设置光标位置准备打印
 		// 同时隐藏光标
-		COORD b = { 0, 0 };
+		COORD b = {0, 0};
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), b);
 		// 打印一次
 		i = 0;
@@ -278,18 +277,18 @@ void game()
 				_cputs("\n");
 			}
 		}
-		COORD c = { 30, 12 };
+		COORD c = {30, 12};
 		// 打印分数
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 156);
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 		printf("marks: %d", marks);
-		//打印当前难度
-		COORD d = { 30, 14 };
+		// 打印当前难度
+		COORD d = {30, 14};
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 156);
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), d);
 		printf("rank: %d", flag);
-		//打印下一个方块
-		COORD e = { 60, 10 };
+		// 打印下一个方块
+		COORD e = {32, 2};
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), e);
 		Next(1)
 		{
@@ -304,11 +303,10 @@ void game()
 			if (r % 4 == 0)
 			{
 				_cputs("\n");
-				COORD e = { 60, 10 + r / 4 };
+				COORD e = {32, 2 + r / 4};
 				SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), e);
 			}
 		}
-		
 	}
 }
 
