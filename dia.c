@@ -165,8 +165,8 @@ void check(int *map, int *c, int *x, int *y, int T[2], int *j, int *k)
 
 void game()
 {
+	c = 1;
 	// 初始化
-
 	// 设置随机数起点
 	srand((unsigned int)time(NULL));
 	// 开辟空间
@@ -175,7 +175,6 @@ void game()
 	// 清屏
 	// 退出
 	// 刷新率
-
 	for (system("cls"); c - 27; Sleep(30))
 	{
 		CONSOLE_CURSOR_INFO a = {1, 0};
@@ -315,12 +314,12 @@ void game()
 int main()
 {
 	// 设置背景颜色
-	system("color 84");
-	welcome();
-	int choice = 0;
-	scanf_s("%d", &choice);
 	while (1)
 	{
+		system("color 84");
+		welcome();
+		int choice = 0;
+		scanf_s("%d", &choice);
 		switch (choice)
 		{
 		case 1:
