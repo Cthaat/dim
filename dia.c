@@ -83,6 +83,22 @@ void welcome()
 	printf("*****************************************************************************\n");
 }
 
+void moden()
+{
+	system("cls");
+	printf("*****************************************************************************\n");
+	printf("*                          Welcome to play Tetris!                          *\n");
+	printf("*                             GAME   MODERN                                 *\n");
+	printf("*                            1 . point system                               *\n");
+	printf("*                                                                           *\n");
+	printf("*                                                                           *\n");
+	printf("*                                                                           *\n");
+	printf("*                         0 . Back to previous page                         *\n");
+	printf("*                            Have a good game.                              *\n");
+	printf("*                                                                           *\n");
+	printf("*****************************************************************************\n");
+}
+
 void move(int *v, int l)
 {
 	// 用Get取出四个位置坐标，并判断合法性
@@ -330,7 +346,22 @@ int main()
 		{
 		case 1:
 			system("cls");
-			game();
+			printf("Please select the mode");
+			int mode = 0;
+			moden();
+			scanf_s("%d", &mode);
+			CONSOLE_CURSOR_INFO a = {1, 0};
+			SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &a);
+			switch (mode)
+			{
+			case 1:
+				CONSOLE_CURSOR_INFO a = {1, 0};
+				SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &a);
+				game();
+				break;
+			default:
+				break;
+			}
 			break;
 		case 0:
 			system("cls");
